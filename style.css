@@ -1,0 +1,20 @@
+.h1 {
+    font-size: larger;
+    color: brown;
+}
+
+.h5 {
+    font-size: larger;
+    color: brown;
+}
+
+p {
+    font-size: medium;
+    color: darkblue;
+}
+
+.container {
+    width: 780px;
+    background-image: url("bacteria_pexels.jpg");
+    background-size: 100%;
+}
