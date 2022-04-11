@@ -76,7 +76,8 @@ function buildCharts(sample) {
     var otu_labels = result.otu_labels;
     var sample_values = result.sample_values;
     //NOTE: this is for the gauge portion - adding wash freq data:
-    var washingFreq = metadataResult.wfreq;
+    //NOTE: applying parse float function to metadata results on washer element*. 
+    var washingFreq = parseFloat(metadataResult.wfreq);
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
@@ -93,6 +94,7 @@ function buildCharts(sample) {
         y: yticks,
         text: otu_labels,
         type: 'bar',
+        orientation: 'h',
     }
     ];
     
@@ -131,10 +133,30 @@ function buildCharts(sample) {
 
 
     //GAUGE SECTION****
+    // 4. Create the trace for the gauge chart.
+    var gaugeData = [{
+      type: "indicator",
+      value: washingFreq,
+      gauge: {
+        steps: [
+          { range: [0, 2], color: "red" },
+          { range: [2, 4], color: "orange" },
+          { range: [4, 6], color: "yellow" },
+          { range: [6, 8], color: "limegreen" },
+          { range: [8, 10], color: "green" }]
+      },
+    }
+    ];
+    
+    // 5. Create the layout for the gauge chart.
+    var gaugeLayout = { 
+      title: {text: "Belly BUtton Washing Frequency" }     
+    };
+
+    // 6. Use Plotly to plot the gauge data and layout.
+    Plotly.newPlot();
     });
   }
-  
-
 
 
 
