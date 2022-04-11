@@ -137,6 +137,10 @@ function buildCharts(sample) {
     var gaugeData = [{
       type: "indicator",
       value: washingFreq,
+      //NOTE: MODE DERIVED FROM PLOTLY CHARTS DOCUMENTATIONS***.
+      //CITATION - https://plotly.com/python/gauge-charts/***. */
+      mode : "gauge+number",
+      domain : {'x': [0, 1], 'y': [0, 1]},
       gauge: {
         steps: [
           { range: [0, 2], color: "red" },
@@ -157,11 +161,4 @@ function buildCharts(sample) {
     Plotly.newPlot("gauge",gaugeData,gaugeLayout)
     });
   }
-
-
-
-
-
-
-
 
